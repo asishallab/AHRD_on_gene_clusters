@@ -72,4 +72,31 @@ options('mc.cores'=detectCores())
 mcl.fams.hrds <- mclapply( mcl.fams, annotateCluster, ipr.annos=gene.2.ipr.df,
   interpro.database=ipr.db )
 
-}
+######################################################
+# Annotate using human readable protein descriptions #
+######################################################
+
+# Prepare and load description data-base (example is for Uniprot Swissprot and
+# Uniprot trEMBL) This requires an underlying System which supports the 'grep'
+# command:
+my.prot.desc.db <- readProteinDescriptionDb( 'path/2/your_database.fasta' )
+# Note, that depending on which database you use (Uniprot or NCBI or any other)
+# you might have to provide non default values for the arguments
+# 'prot.id.regex' and 'prot.short.id.regex'. This package's defaults are
+# adjusted to the UniprotKB format.
+
+# Annotate your protein families using candidate protein descriptions. See
+# AHRD.on.gene.clusters::annotateClusterWithProteinDescription for more
+# details, especially on which protein ID to use when looking up candidate
+# descriptions in my.prot.desc.db.
+mcl.fams.prot.descs <- setNames( lapply( mcl.fams,
+  annotateClusterWithProteinDescription, prot.desc.db = my.prot.desc.db ),
+  names(mcl.fams)
+)
+
+# Or do the above in parallel by
+options(mc.cores=detectCores())
+mcl.fams.prot.descs <- setNames( mclapply( mcl.fams,
+  annotateClusterWithProteinDescription, prot.desc.db = my.prot.desc.db ),
+  names(mcl.fams)
+)
