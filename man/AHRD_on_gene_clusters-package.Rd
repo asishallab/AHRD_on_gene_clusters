@@ -100,3 +100,4 @@ mcl.fams.prot.descs <- setNames( mclapply( mcl.fams,
   annotateClusterWithProteinDescription, prot.desc.db = my.prot.desc.db ),
   names(mcl.fams)
 )
+}
