@@ -6,16 +6,16 @@
 #' @param blacklist.regexs A character vector of regular expression to be used
 #' in the process of blacklisting. Default is
 #' \code{getOption('AHRD.prot.desc.blacklist',
-#' readLines(file.path(path.package('AHRD.on.gene.clusters'),
+#' readLines(file.path(path.package('AhrdOnGeneClusters'),
 #' 'blacklist_descline.txt')))}
 #' @param ... optional additional parameters passed to function
-#' \code{AHRD.on.gene.clusters::blacklist}
+#' \code{AhrdOnGeneClusters::blacklist}
 #'
 #' @export
 #' @return A subset of \code{prot.descs} of which no element matched any
 #' regular expression in \code{blacklist.regexs}.
 blacklistProtDescs <- function(prot.descs, blacklist.regexs = getOption("AHRD.prot.desc.blacklist", 
-    readLines(file.path(path.package("AHRD.on.gene.clusters"), "blacklist_descline.txt"))), 
+    readLines(file.path(path.package("AhrdOnGeneClusters"), "blacklist_descline.txt"))), 
     ...) {
     blacklist(prot.descs, blacklist.regexs, ...)
 }
@@ -27,17 +27,17 @@ blacklistProtDescs <- function(prot.descs, blacklist.regexs = getOption("AHRD.pr
 #' submitted to blacklisting.
 #' @param blacklist.regexs A character vector of regular expression to be used
 #' in the process of blacklisting. Default is
-#' \code{getOption('AHRD.on.gene.clusters',
-#' readLines(file.path(path.package('AHRD.on.gene.clusters'),
+#' \code{getOption('AhrdOnGeneClusters',
+#' readLines(file.path(path.package('AhrdOnGeneClusters'),
 #' 'blacklist_token.txt')))}
 #' @param ... optional additional parameters passed to function
-#' \code{AHRD.on.gene.clusters::blacklist}
+#' \code{AhrdOnGeneClusters::blacklist}
 #'
 #' @export
 #' @return A subset of \code{tokens} of which no element matched any regular
 #' expression in \code{blacklist.regexs}.
 blacklistTokens <- function(tokens, blacklist.regexs = getOption("AHRD.token.blacklist", 
-    readLines(file.path(path.package("AHRD.on.gene.clusters"), "blacklist_token.txt"))), 
+    readLines(file.path(path.package("AhrdOnGeneClusters"), "blacklist_token.txt"))), 
     ...) {
     blacklist(tokens, blacklist.regexs, ...)
 }
@@ -65,17 +65,17 @@ blacklist <- function(strs, blacklist.regexs, ...) {
 #' @param prot.descs A character vector of protein descriptions to be filtered.
 #' @param filter.regexs A character vector of regular expressions to be used
 #' within filtering. Default is \code{getOption('AHRD.prot.desc.filter',
-#' readLines(file.path(path.package('AHRD.on.gene.clusters'),
+#' readLines(file.path(path.package('AhrdOnGeneClusters'),
 #' 'filter_descline.txt')))}
 #' @param ... optional additional parameters passed to function
-#' \code{AHRD.on.gene.clusters::filter}.
+#' \code{AhrdOnGeneClusters::filter}.
 #'
 #' @export
 #' @return A modified version of \code{prot.descs} in which all matches to any
 #' regular expression in \code{filter.regexs}, along with leading or trailing
 #' white spaces has been deleted.
 filterProtDescs <- function(prot.descs, filter.regexs = getOption("AHRD.prot.desc.filter", 
-    readLines(file.path(path.package("AHRD.on.gene.clusters"), "filter_descline.txt"))), 
+    readLines(file.path(path.package("AhrdOnGeneClusters"), "filter_descline.txt"))), 
     ...) {
     filter(prot.descs, filter.regexs, ...)
 }
@@ -87,17 +87,17 @@ filterProtDescs <- function(prot.descs, filter.regexs = getOption("AHRD.prot.des
 #' @param tokens A character vector of protein descriptions to be filtered.
 #' @param filter.regexs A character vector of regular expressions to be used
 #' within filtering. Default is \code{getOption('AHRD.prot.desc.filter',
-#' readLines(file.path(path.package('AHRD.on.gene.clusters'),
+#' readLines(file.path(path.package('AhrdOnGeneClusters'),
 #' 'filter_token.txt')))}
 #' @param ... optional additional parameters passed to function
-#' \code{AHRD.on.gene.clusters::filter}.
+#' \code{AhrdOnGeneClusters::filter}.
 #'
 #' @export
 #' @return A modified version of \code{tokens} in which all matches to any
 #' regular expression in \code{filter.regexs}, along with leading or trailing
 #' white spaces has been deleted.
 filterTokens <- function(tokens, filter.regexs = getOption("AHRD.token.filter", 
-    readLines(file.path(path.package("AHRD.on.gene.clusters"), "filter_token.txt"))), 
+    readLines(file.path(path.package("AhrdOnGeneClusters"), "filter_token.txt"))), 
     ...) {
     filter(tokens, filter.regexs, ...)
 }
@@ -167,8 +167,8 @@ readProteinDescriptionDb <- function(path.2.fasta, prot.id.regex = getOption("AH
 #' Generates a human readable description (HRD) for the argument
 #' \code{prot.fam} based on the protein descriptions found for the genes
 #' contained within the family. Candidate descriptions are filtered using
-#' \code{AHRD.on.gene.clusters::filterTokens} and blacklisted with
-#' \code{AHRD.on.gene.clusters::blacklistProtDescs}. The most frequent of the
+#' \code{AhrdOnGeneClusters::filterTokens} and blacklisted with
+#' \code{AhrdOnGeneClusters::blacklistProtDescs}. The most frequent of the
 #' retained descriptions are assigned as the clusters HRD. Maximum frequency
 #' and Shannon Entropy are also returned as a measure of confidence.
 #'
@@ -176,13 +176,13 @@ readProteinDescriptionDb <- function(path.2.fasta, prot.id.regex = getOption("AH
 #' argument protein family to annotate.
 #' @param prot.desc.db A data.frame with protein descriptions for the family's
 #' members. Typically the result of invoking
-#' \code{AHRD.on.gene.clusters::readProteinDescriptionDb}.
+#' \code{AhrdOnGeneClusters::readProteinDescriptionDb}.
 #' @param prot.id.col A string or integer identifying the column of
 #' \code{prot.desc.db} in which to find the protein IDs. Default is
-#' \code{"SHORT.ID"}.
+#' \code{'SHORT.ID'}.
 #' @param prot.desc.col A string or integer identifying the column of
 #' \code{prot.desc.db} in which to find the protein descriptions. Default is
-#' \code{"filtered.description"}.
+#' \code{'filtered.description'}.
 #'
 #' @export
 #' @return A list with the following key-value pairs: \code{descriptions} a
@@ -194,7 +194,7 @@ readProteinDescriptionDb <- function(path.2.fasta, prot.id.regex = getOption("AH
 #' retained after filtering and blacklisting.
 annotateClusterWithProteinDescription <- function(prot.fam, prot.desc.db, 
     prot.id.col = "SHORT.ID", prot.desc.col = "filtered.description") {
-    pf.descs <- blacklistProtDescs(filterTokens(prot.desc.db[which(prot.desc.col[, 
+    pf.descs <- blacklistProtDescs(filterTokens(prot.desc.db[which(prot.desc.db[, 
         prot.id.col] %in% prot.fam), prot.desc.col]))
     if (!is.null(pf.descs) && length(pf.descs) > 0) {
         pf.descs.tbl <- table(pf.descs)

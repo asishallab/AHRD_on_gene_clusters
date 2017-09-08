@@ -7,7 +7,7 @@ expression in the argument \code{blacklist.regexs}.}
 \usage{
 blacklistProtDescs(prot.descs,
   blacklist.regexs = getOption("AHRD.prot.desc.blacklist",
-  readLines(file.path(path.package("AHRD.on.gene.clusters"),
+  readLines(file.path(path.package("AhrdOnGeneClusters"),
   "blacklist_descline.txt"))), ...)
 }
 \arguments{
@@ -17,11 +17,11 @@ submitted to blacklisting.}
 \item{blacklist.regexs}{A character vector of regular expression to be used
 in the process of blacklisting. Default is
 \code{getOption('AHRD.prot.desc.blacklist',
-readLines(file.path(path.package('AHRD.on.gene.clusters'),
+readLines(file.path(path.package('AhrdOnGeneClusters'),
 'blacklist_descline.txt')))}}
 
 \item{...}{optional additional parameters passed to function
-\code{AHRD.on.gene.clusters::blacklist}}
+\code{AhrdOnGeneClusters::blacklist}}
 }
 \value{
 A subset of \code{prot.descs} of which no element matched any

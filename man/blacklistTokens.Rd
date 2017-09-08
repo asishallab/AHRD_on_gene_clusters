@@ -6,7 +6,7 @@
 expression in the argument \code{blacklist.regexs}.}
 \usage{
 blacklistTokens(tokens, blacklist.regexs = getOption("AHRD.token.blacklist",
-  readLines(file.path(path.package("AHRD.on.gene.clusters"),
+  readLines(file.path(path.package("AhrdOnGeneClusters"),
   "blacklist_token.txt"))), ...)
 }
 \arguments{
@@ -15,12 +15,12 @@ submitted to blacklisting.}
 
 \item{blacklist.regexs}{A character vector of regular expression to be used
 in the process of blacklisting. Default is
-\code{getOption('AHRD.on.gene.clusters',
-readLines(file.path(path.package('AHRD.on.gene.clusters'),
+\code{getOption('AhrdOnGeneClusters',
+readLines(file.path(path.package('AhrdOnGeneClusters'),
 'blacklist_token.txt')))}}
 
 \item{...}{optional additional parameters passed to function
-\code{AHRD.on.gene.clusters::blacklist}}
+\code{AhrdOnGeneClusters::blacklist}}
 }
 \value{
 A subset of \code{tokens} of which no element matched any regular

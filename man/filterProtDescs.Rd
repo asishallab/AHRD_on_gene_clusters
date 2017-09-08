@@ -7,7 +7,7 @@ any of the regular expressions in argument \code{filter.regexs} is deleted.
 Finally leading and trailing white spaces are also abolished.}
 \usage{
 filterProtDescs(prot.descs, filter.regexs = getOption("AHRD.prot.desc.filter",
-  readLines(file.path(path.package("AHRD.on.gene.clusters"),
+  readLines(file.path(path.package("AhrdOnGeneClusters"),
   "filter_descline.txt"))), ...)
 }
 \arguments{
@@ -15,11 +15,11 @@ filterProtDescs(prot.descs, filter.regexs = getOption("AHRD.prot.desc.filter",
 
 \item{filter.regexs}{A character vector of regular expressions to be used
 within filtering. Default is \code{getOption('AHRD.prot.desc.filter',
-readLines(file.path(path.package('AHRD.on.gene.clusters'),
+readLines(file.path(path.package('AhrdOnGeneClusters'),
 'filter_descline.txt')))}}
 
 \item{...}{optional additional parameters passed to function
-\code{AHRD.on.gene.clusters::filter}.}
+\code{AhrdOnGeneClusters::filter}.}
 }
 \value{
 A modified version of \code{prot.descs} in which all matches to any

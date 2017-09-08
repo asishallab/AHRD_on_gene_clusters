@@ -5,8 +5,8 @@
 \title{Generates a human readable description (HRD) for the argument
 \code{prot.fam} based on the protein descriptions found for the genes
 contained within the family. Candidate descriptions are filtered using
-\code{AHRD.on.gene.clusters::filterTokens} and blacklisted with
-\code{AHRD.on.gene.clusters::blacklistProtDescs}. The most frequent of the
+\code{AhrdOnGeneClusters::filterTokens} and blacklisted with
+\code{AhrdOnGeneClusters::blacklistProtDescs}. The most frequent of the
 retained descriptions are assigned as the clusters HRD. Maximum frequency
 and Shannon Entropy are also returned as a measure of confidence.}
 \usage{
@@ -19,15 +19,15 @@ argument protein family to annotate.}
 
 \item{prot.desc.db}{A data.frame with protein descriptions for the family's
 members. Typically the result of invoking
-\code{AHRD.on.gene.clusters::readProteinDescriptionDb}.}
+\code{AhrdOnGeneClusters::readProteinDescriptionDb}.}
 
 \item{prot.id.col}{A string or integer identifying the column of
 \code{prot.desc.db} in which to find the protein IDs. Default is
-\code{"SHORT.ID"}.}
+\code{'SHORT.ID'}.}
 
 \item{prot.desc.col}{A string or integer identifying the column of
 \code{prot.desc.db} in which to find the protein descriptions. Default is
-\code{"filtered.description"}.}
+\code{'filtered.description'}.}
 }
 \value{
 A list with the following key-value pairs: \code{descriptions} a
@@ -42,8 +42,8 @@ retained after filtering and blacklisting.
 Generates a human readable description (HRD) for the argument
 \code{prot.fam} based on the protein descriptions found for the genes
 contained within the family. Candidate descriptions are filtered using
-\code{AHRD.on.gene.clusters::filterTokens} and blacklisted with
-\code{AHRD.on.gene.clusters::blacklistProtDescs}. The most frequent of the
+\code{AhrdOnGeneClusters::filterTokens} and blacklisted with
+\code{AhrdOnGeneClusters::blacklistProtDescs}. The most frequent of the
 retained descriptions are assigned as the clusters HRD. Maximum frequency
 and Shannon Entropy are also returned as a measure of confidence.
 }

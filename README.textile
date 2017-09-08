@@ -46,11 +46,11 @@ h2. Usage
 
 In an interactive R shell type:
 
-bc. require( AHRD.on.gene.clusters )
+bc. require( AhrdOnGeneClusters )
 
 And get a descriptive usage example with:
 
-bc. help( 'AHRD.on.gene.clusters-package' )
+bc. help( 'AhrdOnGeneClusters-package' )
 
 h2. References
 
