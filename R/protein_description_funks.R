@@ -54,8 +54,10 @@ blacklistTokens <- function(tokens, blacklist.regexs = getOption("AHRD.token.bla
 #' @return A subset of \code{strs} of which no element matches any regular
 #' expression in argument \code{blacklist.regexs}.
 blacklist <- function(strs, blacklist.regexs, ...) {
-    strs[!Reduce(`|`, lapply(blacklist.regexs, function(b.regex) grepl(b.regex, 
-        strs, ...)))]
+    if (length(blacklist.regexs) > 0) {
+        strs[!Reduce(`|`, lapply(blacklist.regexs, function(b.regex) grepl(b.regex, 
+            strs, ...)))]
+    } else strs
 }
 
 #' Within each element of argument \code{prot.descs} all substrings matching
@@ -117,8 +119,10 @@ filterTokens <- function(tokens, filter.regexs = getOption("AHRD.token.filter",
 #' regular expression in \code{filter.regexs}, along with leading or trailing
 #' white spaces has been deleted.
 filter <- function(strs, filter.regexs, ...) {
-    for (flt in filter.regexs) {
-        strs <- gsub(flt, "", strs, ...)
+    if (length(filter.regexs) > 0) {
+        for (flt in filter.regexs) {
+            strs <- gsub(flt, "", strs, ...)
+        }
     }
     sub("^\\s+", "", sub("\\s+$", "", strs))
 }
